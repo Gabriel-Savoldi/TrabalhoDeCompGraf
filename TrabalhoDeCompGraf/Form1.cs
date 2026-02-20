@@ -71,10 +71,11 @@ namespace TrabalhoDeCompGraf
 
     public partial class Form1 : Form
     {
-        private Bitmap imageBitmap;
-        private Image image;
+        private Bitmap imageBitmap, originalBitmap;
+        private Image image ;
         private HSI[,] imgHSI;
         private RGB[,] imgRGB;
+        private int brilhoAtual = 0;
 
 
         public int GetFormHeight()
@@ -139,6 +140,7 @@ namespace TrabalhoDeCompGraf
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 image = Image.FromFile(openFileDialog.FileName);
+                originalBitmap = new Bitmap(image);
                 picBoxImg1.Image = image;
                 picBoxZoom.Image = null;
                 imageBitmap = (Bitmap)image;
@@ -148,6 +150,80 @@ namespace TrabalhoDeCompGraf
                 Conversor.RgbToRgb(imageBitmap,imgRGB);
             }
         }
+
+
+        private void AplicarBrilho(int valor)
+        {
+            if (originalBitmap != null)
+            {
+                Bitmap novaImagem = new Bitmap(originalBitmap.Width, originalBitmap.Height,
+                    System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+                Rectangle retangulo = new Rectangle(0, 0, originalBitmap.Width, originalBitmap.Height);
+
+                var dataOrig = originalBitmap.LockBits(retangulo,
+                    System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                    System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+                var dataNova = novaImagem.LockBits(retangulo,
+                    System.Drawing.Imaging.ImageLockMode.WriteOnly,
+                    System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+
+                int largura = originalBitmap.Width;
+                int altura = originalBitmap.Height;
+                int strideOrig = dataOrig.Stride;
+                int strideNova = dataNova.Stride;
+
+                double resp = Math.Abs(valor) / 100.0;
+
+                unsafe
+                {
+                    byte* ptrOrig = (byte*)dataOrig.Scan0;
+                    byte* ptrNova = (byte*)dataNova.Scan0;
+
+                    for (int y = 0; y < altura; y++)
+                    {
+                        byte* linhaOrig = ptrOrig + (y * strideOrig);
+                        byte* linhaNova = ptrNova + (y * strideNova);
+
+                        for (int x = 0; x < largura; x++)
+                        {
+                            int aux = x * 3;
+
+                            int b = linhaOrig[aux];
+                            int g = linhaOrig[aux + 1];
+                            int r = linhaOrig[aux + 2];
+
+                            if (valor > 0)
+                            {
+                                // aproxima do branco
+                                b = (int)(b + (255 - b) * resp);
+                                g = (int)(g + (255 - g) * resp);
+                                r = (int)(r + (255 - r) * resp);
+                            }
+                            else
+                            {
+                                // aproxima do preto
+                                b = (int)(b * (1 - resp));
+                                g = (int)(g * (1 - resp));
+                                r = (int)(r * (1 - resp));
+                            }
+
+                            linhaNova[aux] = (byte)b;
+                            linhaNova[aux + 1] = (byte)g;
+                            linhaNova[aux + 2] = (byte)r;
+                        }
+                    }
+                }
+
+                originalBitmap.UnlockBits(dataOrig);
+                novaImagem.UnlockBits(dataNova);
+
+                picBoxImg1.Image = novaImagem;
+                imageBitmap = novaImagem;
+            }
+        }
+
 
         private void picBoxImg1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -349,6 +425,42 @@ namespace TrabalhoDeCompGraf
             Bitmap imgDest = new Bitmap(image);
             Conversor.diminuirMatiz(imgRGB, imgHSI, imgDest);
             picBoxImg1.Image = imgDest;
+        }
+
+        // ===== BOTÃO + =====
+        private void btnMaisBrilho_Click(object sender, EventArgs e)
+        {
+            if (trackBrilho.Value < trackBrilho.Maximum)
+                trackBrilho.Value += 1;
+
+            brilhoAtual = trackBrilho.Value;
+            AplicarBrilho(brilhoAtual);
+        }
+
+        // ===== BOTÃO - =====
+        private void btnMenosBrilho_Click_2(object sender, EventArgs e)
+        {
+            if (trackBrilho.Value > trackBrilho.Minimum)
+                trackBrilho.Value -= 1;
+
+            brilhoAtual = trackBrilho.Value;
+            AplicarBrilho(brilhoAtual);
+        }
+
+        private void btnMenosBrilho_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBrilho_Scroll(object sender, EventArgs e)
+        {
+            brilhoAtual = trackBrilho.Value;
+            AplicarBrilho(brilhoAtual);
+        }
+
+        private void picBoxZoom_Click(object sender, EventArgs e)
+        {
+
         }
     }
     }

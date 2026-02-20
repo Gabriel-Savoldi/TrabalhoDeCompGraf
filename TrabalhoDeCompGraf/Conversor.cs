@@ -11,7 +11,7 @@ namespace TrabalhoDeCompGraf
 {
     class Conversor
     {
-        /* private static HSI RgbToHsi(int R, int G, int B)
+         private static HSI RgbToHsi(int R, int G, int B)
          {
              double r, g, b, h, s, i, H, S, I;
              int soma = R + G + B;
@@ -31,7 +31,7 @@ namespace TrabalhoDeCompGraf
 
                  if(r==b && b==g) // evitando o numerador ser 0 normalmente quando isso ocorre h=1
                  {
-                     h = 0;
+                     h = 1;
                  }
 
              }
@@ -54,9 +54,9 @@ namespace TrabalhoDeCompGraf
              //I = i;
              return new HSI(H, S, I);
 
-         }*/
+         }
 
-
+        /*
         private static HSI RgbToHsi(int R, int G, int B)
         {
             double r = R / 255.0;
@@ -123,7 +123,7 @@ namespace TrabalhoDeCompGraf
             double I = Math.Round(i * 255.0);           // 0-255
 
             return new HSI(H, S, I);
-        }
+        } */
 
 
         public static RGB HsiToRgb(HSI hsi)

@@ -45,7 +45,10 @@
             this.labelB = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnMenosBrilho = new System.Windows.Forms.Button();
+            this.btnMaisBrilho = new System.Windows.Forms.Button();
+            this.trackBrilho = new System.Windows.Forms.TrackBar();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -77,7 +80,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Configurações = new System.Windows.Forms.TabControl();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxImg1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxS)).BeginInit();
@@ -86,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxB)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBrilho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarInicio)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -233,8 +236,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnMenosBrilho);
+            this.tabPage3.Controls.Add(this.btnMaisBrilho);
+            this.tabPage3.Controls.Add(this.trackBrilho);
             this.tabPage3.Controls.Add(this.button4);
-            this.tabPage3.Controls.Add(this.textBox1);
             this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.label5);
@@ -257,16 +262,51 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // btnMenosBrilho
             // 
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 37;
+            this.btnMenosBrilho.Location = new System.Drawing.Point(19, 523);
+            this.btnMenosBrilho.Name = "btnMenosBrilho";
+            this.btnMenosBrilho.Size = new System.Drawing.Size(75, 23);
+            this.btnMenosBrilho.TabIndex = 40;
+            this.btnMenosBrilho.Text = "-";
+            this.btnMenosBrilho.UseVisualStyleBackColor = true;
+            this.btnMenosBrilho.Click += new System.EventHandler(this.btnMenosBrilho_Click);
+            // 
+            // btnMaisBrilho
+            // 
+            this.btnMaisBrilho.Location = new System.Drawing.Point(100, 523);
+            this.btnMaisBrilho.Name = "btnMaisBrilho";
+            this.btnMaisBrilho.Size = new System.Drawing.Size(75, 23);
+            this.btnMaisBrilho.TabIndex = 39;
+            this.btnMaisBrilho.Text = "+";
+            this.btnMaisBrilho.UseVisualStyleBackColor = true;
+            this.btnMaisBrilho.Click += new System.EventHandler(this.btnMaisBrilho_Click);
+            // 
+            // trackBrilho
+            // 
+            this.trackBrilho.Location = new System.Drawing.Point(10, 456);
+            this.trackBrilho.Margin = new System.Windows.Forms.Padding(2);
+            this.trackBrilho.Maximum = 100;
+            this.trackBrilho.Minimum = -100;
+            this.trackBrilho.Name = "trackBrilho";
+            this.trackBrilho.Size = new System.Drawing.Size(188, 45);
+            this.trackBrilho.TabIndex = 2;
+            this.trackBrilho.TickFrequency = 10;
+            this.trackBrilho.Scroll += new System.EventHandler(this.trackBrilho_Scroll);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(19, 382);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 38;
+            this.button4.Text = "-";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.diminuitMatiz_click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(25, 380);
+            this.button3.Location = new System.Drawing.Point(100, 382);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 36;
@@ -296,7 +336,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(82, 514);
+            this.label4.Location = new System.Drawing.Point(81, 430);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 0;
@@ -463,6 +503,7 @@
             this.picBoxZoom.Size = new System.Drawing.Size(100, 100);
             this.picBoxZoom.TabIndex = 9;
             this.picBoxZoom.TabStop = false;
+            this.picBoxZoom.Click += new System.EventHandler(this.picBoxZoom_Click);
             // 
             // labC
             // 
@@ -564,16 +605,6 @@
             this.Configurações.Size = new System.Drawing.Size(216, 597);
             this.Configurações.TabIndex = 19;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(106, 380);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 38;
-            this.button4.Text = "-";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.diminuitMatiz_click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,6 +637,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxB)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBrilho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFim)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarInicio)).EndInit();
             this.tabPage1.ResumeLayout(false);
@@ -667,8 +699,10 @@
         private System.Windows.Forms.TabControl Configurações;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TrackBar trackBrilho;
+        private System.Windows.Forms.Button btnMenosBrilho;
+        private System.Windows.Forms.Button btnMaisBrilho;
     }
 }
 
