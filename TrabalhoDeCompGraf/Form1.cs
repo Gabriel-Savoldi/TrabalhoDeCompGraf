@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -76,6 +76,7 @@ namespace TrabalhoDeCompGraf
         private HSI[,] imgHSI;
         private RGB[,] imgRGB;
         private int brilhoAtual = 0;
+        bool flag;
 
 
         public int GetFormHeight()
@@ -121,6 +122,7 @@ namespace TrabalhoDeCompGraf
             labelX.Visible = false;
 
             inicializar();
+            flag = false;
 
             trackBarInicio.SetRange(0, 360);
             trackBarFim.SetRange(0, 360);
@@ -334,6 +336,8 @@ namespace TrabalhoDeCompGraf
             {
                 Image imagem;
 
+                flag = true;
+
                 picBoxImg1.Visible = false;
 
                 pictureBoxH.Visible = true;
@@ -379,7 +383,9 @@ namespace TrabalhoDeCompGraf
 
         private void btnSegmentar_Click(object sender, EventArgs e)
         {
-            inicializar();
+            if (flag)
+                inicializar();
+
             if (picBoxImg1.Image != null)
             {
                 Image imagem;
@@ -408,20 +414,35 @@ namespace TrabalhoDeCompGraf
 
         private void btnLuminancia_click(object sender, EventArgs e)
         {
-            Bitmap imgDest = new Bitmap(image);
-            Conversor.luminancia(imgRGB, imgDest);
-            picBoxImg1.Image = imgDest;
+            if (flag)
+                inicializar();
+
+            if (image != null)
+            {
+                Bitmap imgDest = new Bitmap(image);
+                Conversor.luminancia(imgRGB, imgDest);
+                picBoxImg1.Image = imgDest;
+            }
         }
 
         private void aumentarMatiz_click(object sender, EventArgs e)
         {
-            Bitmap imgDest = new Bitmap(image);
-            Conversor.aumentarMatiz(imgRGB, imgHSI, imgDest);
-            picBoxImg1.Image = imgDest;
+            if (flag)
+                inicializar();
+
+            if (image != null)
+            {
+                Bitmap imgDest = new Bitmap(image);
+                Conversor.aumentarMatiz(imgRGB, imgHSI, imgDest);
+                picBoxImg1.Image = imgDest;
+            }
         }
 
         private void diminuitMatiz_click(object sender, EventArgs e)
         {
+            if (flag)
+                inicializar();
+
             Bitmap imgDest = new Bitmap(image);
             Conversor.diminuirMatiz(imgRGB, imgHSI, imgDest);
             picBoxImg1.Image = imgDest;
@@ -430,6 +451,9 @@ namespace TrabalhoDeCompGraf
         // ===== BOTÃO + =====
         private void btnMaisBrilho_Click(object sender, EventArgs e)
         {
+            if (flag)
+                inicializar();
+
             if (trackBrilho.Value < trackBrilho.Maximum)
                 trackBrilho.Value += 1;
 
@@ -440,6 +464,9 @@ namespace TrabalhoDeCompGraf
         // ===== BOTÃO - =====
         private void btnMenosBrilho_Click_2(object sender, EventArgs e)
         {
+            if (flag)
+                inicializar();
+
             if (trackBrilho.Value > trackBrilho.Minimum)
                 trackBrilho.Value -= 1;
 
