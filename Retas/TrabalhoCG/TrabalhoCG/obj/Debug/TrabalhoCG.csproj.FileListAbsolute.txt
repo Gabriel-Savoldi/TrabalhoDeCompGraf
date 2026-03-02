@@ -1,0 +1,11 @@
+D:\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.exe.config
+D:\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.exe
+D:\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.pdb
+D:\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.AssemblyReference.cache
+D:\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.SuggestedBindingRedirects.cache
+D:\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.Form1.resources
+D:\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.Properties.Resources.resources
+D:\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.GenerateResource.cache
+D:\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.cache
+D:\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe
+D:\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
