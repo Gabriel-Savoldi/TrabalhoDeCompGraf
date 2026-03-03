@@ -30,15 +30,16 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.Retas = new System.Windows.Forms.TabPage();
-            this.Circunferencia = new System.Windows.Forms.TabPage();
-            this.rbEqReta = new System.Windows.Forms.RadioButton();
-            this.rbDDA = new System.Windows.Forms.RadioButton();
             this.rbPMR = new System.Windows.Forms.RadioButton();
-            this.rbEqCircu = new System.Windows.Forms.RadioButton();
-            this.rbTrigo = new System.Windows.Forms.RadioButton();
+            this.rbDDA = new System.Windows.Forms.RadioButton();
+            this.rbEqReta = new System.Windows.Forms.RadioButton();
+            this.Circunferencia = new System.Windows.Forms.TabPage();
             this.rbPMC = new System.Windows.Forms.RadioButton();
+            this.rbTrigo = new System.Windows.Forms.RadioButton();
+            this.rbEqCircu = new System.Windows.Forms.RadioButton();
             this.picBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.chekBoxReta = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.Retas.SuspendLayout();
             this.Circunferencia.SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             // Retas
             // 
+            this.Retas.Controls.Add(this.chekBoxReta);
             this.Retas.Controls.Add(this.rbPMR);
             this.Retas.Controls.Add(this.rbDDA);
             this.Retas.Controls.Add(this.rbEqReta);
@@ -68,6 +70,39 @@
             this.Retas.TabIndex = 1;
             this.Retas.Text = "Retas";
             this.Retas.UseVisualStyleBackColor = true;
+            // 
+            // rbPMR
+            // 
+            this.rbPMR.AutoSize = true;
+            this.rbPMR.Location = new System.Drawing.Point(69, 166);
+            this.rbPMR.Name = "rbPMR";
+            this.rbPMR.Size = new System.Drawing.Size(85, 17);
+            this.rbPMR.TabIndex = 2;
+            this.rbPMR.TabStop = true;
+            this.rbPMR.Text = "Ponto Médio";
+            this.rbPMR.UseVisualStyleBackColor = true;
+            // 
+            // rbDDA
+            // 
+            this.rbDDA.AutoSize = true;
+            this.rbDDA.Location = new System.Drawing.Point(69, 141);
+            this.rbDDA.Name = "rbDDA";
+            this.rbDDA.Size = new System.Drawing.Size(48, 17);
+            this.rbDDA.TabIndex = 1;
+            this.rbDDA.TabStop = true;
+            this.rbDDA.Text = "DDA";
+            this.rbDDA.UseVisualStyleBackColor = true;
+            // 
+            // rbEqReta
+            // 
+            this.rbEqReta.AutoSize = true;
+            this.rbEqReta.Location = new System.Drawing.Point(69, 118);
+            this.rbEqReta.Name = "rbEqReta";
+            this.rbEqReta.Size = new System.Drawing.Size(109, 17);
+            this.rbEqReta.TabIndex = 0;
+            this.rbEqReta.TabStop = true;
+            this.rbEqReta.Text = "Equação da Reta";
+            this.rbEqReta.UseVisualStyleBackColor = true;
             // 
             // Circunferencia
             // 
@@ -82,49 +117,16 @@
             this.Circunferencia.Text = "Circunferência";
             this.Circunferencia.UseVisualStyleBackColor = true;
             // 
-            // rbEqReta
+            // rbPMC
             // 
-            this.rbEqReta.AutoSize = true;
-            this.rbEqReta.Location = new System.Drawing.Point(69, 59);
-            this.rbEqReta.Name = "rbEqReta";
-            this.rbEqReta.Size = new System.Drawing.Size(109, 17);
-            this.rbEqReta.TabIndex = 0;
-            this.rbEqReta.TabStop = true;
-            this.rbEqReta.Text = "Equação da Reta";
-            this.rbEqReta.UseVisualStyleBackColor = true;
-            // 
-            // rbDDA
-            // 
-            this.rbDDA.AutoSize = true;
-            this.rbDDA.Location = new System.Drawing.Point(69, 82);
-            this.rbDDA.Name = "rbDDA";
-            this.rbDDA.Size = new System.Drawing.Size(48, 17);
-            this.rbDDA.TabIndex = 1;
-            this.rbDDA.TabStop = true;
-            this.rbDDA.Text = "DDA";
-            this.rbDDA.UseVisualStyleBackColor = true;
-            // 
-            // rbPMR
-            // 
-            this.rbPMR.AutoSize = true;
-            this.rbPMR.Location = new System.Drawing.Point(69, 107);
-            this.rbPMR.Name = "rbPMR";
-            this.rbPMR.Size = new System.Drawing.Size(85, 17);
-            this.rbPMR.TabIndex = 2;
-            this.rbPMR.TabStop = true;
-            this.rbPMR.Text = "Ponto Médio";
-            this.rbPMR.UseVisualStyleBackColor = true;
-            // 
-            // rbEqCircu
-            // 
-            this.rbEqCircu.AutoSize = true;
-            this.rbEqCircu.Location = new System.Drawing.Point(48, 70);
-            this.rbEqCircu.Name = "rbEqCircu";
-            this.rbEqCircu.Size = new System.Drawing.Size(154, 17);
-            this.rbEqCircu.TabIndex = 1;
-            this.rbEqCircu.TabStop = true;
-            this.rbEqCircu.Text = "Equação da Circunfêrencia";
-            this.rbEqCircu.UseVisualStyleBackColor = true;
+            this.rbPMC.AutoSize = true;
+            this.rbPMC.Location = new System.Drawing.Point(48, 116);
+            this.rbPMC.Name = "rbPMC";
+            this.rbPMC.Size = new System.Drawing.Size(85, 17);
+            this.rbPMC.TabIndex = 3;
+            this.rbPMC.TabStop = true;
+            this.rbPMC.Text = "Ponto Médio";
+            this.rbPMC.UseVisualStyleBackColor = true;
             // 
             // rbTrigo
             // 
@@ -137,29 +139,40 @@
             this.rbTrigo.Text = "Trigonometrica";
             this.rbTrigo.UseVisualStyleBackColor = true;
             // 
-            // rbPMC
+            // rbEqCircu
             // 
-            this.rbPMC.AutoSize = true;
-            this.rbPMC.Location = new System.Drawing.Point(48, 116);
-            this.rbPMC.Name = "rbPMC";
-            this.rbPMC.Size = new System.Drawing.Size(85, 17);
-            this.rbPMC.TabIndex = 3;
-            this.rbPMC.TabStop = true;
-            this.rbPMC.Text = "Ponto Médio";
-            this.rbPMC.UseVisualStyleBackColor = true;
+            this.rbEqCircu.AutoSize = true;
+            this.rbEqCircu.Location = new System.Drawing.Point(48, 70);
+            this.rbEqCircu.Name = "rbEqCircu";
+            this.rbEqCircu.Size = new System.Drawing.Size(154, 17);
+            this.rbEqCircu.TabIndex = 1;
+            this.rbEqCircu.TabStop = true;
+            this.rbEqCircu.Text = "Equação da Circunfêrencia";
+            this.rbEqCircu.UseVisualStyleBackColor = true;
             // 
             // picBox1
             // 
             this.picBox1.Location = new System.Drawing.Point(262, 12);
             this.picBox1.Name = "picBox1";
-            this.picBox1.Size = new System.Drawing.Size(1206, 817);
+            this.picBox1.Size = new System.Drawing.Size(1200, 800);
             this.picBox1.TabIndex = 1;
             this.picBox1.TabStop = false;
-            this.picBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.picBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picBox1_MouseClick);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // chekBoxReta
+            // 
+            this.chekBoxReta.AutoSize = true;
+            this.chekBoxReta.Location = new System.Drawing.Point(54, 56);
+            this.chekBoxReta.Name = "chekBoxReta";
+            this.chekBoxReta.Size = new System.Drawing.Size(98, 17);
+            this.chekBoxReta.TabIndex = 2;
+            this.chekBoxReta.Text = "Desenhar Reta";
+            this.chekBoxReta.UseVisualStyleBackColor = true;
+            this.chekBoxReta.CheckedChanged += new System.EventHandler(this.chekBoxReta_CheckedChanged);
             // 
             // Form1
             // 
@@ -193,6 +206,7 @@
         private System.Windows.Forms.RadioButton rbEqCircu;
         private System.Windows.Forms.PictureBox picBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.CheckBox chekBoxReta;
     }
 }
 
