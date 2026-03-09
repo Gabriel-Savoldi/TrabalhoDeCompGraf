@@ -38,7 +38,7 @@ namespace TrabalhoCG
 
         private void picBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (!desenhando)
+            if (!desenhando && x1==-1)  
             {
                 x1 = e.X;
                 y1 = e.Y;
@@ -56,14 +56,16 @@ namespace TrabalhoCG
                     (y1, y2) = (y2, y1);
                 }
                 if (rbEqReta.Checked)
-                    desenharReta(x1, y1, x2, y2, Color.Black);
+                    desenharReta(bmp,x1, y1, x2, y2, Color.Black);
                 else
                     if (rbDDA.Checked)
-                    DDA(x1, y1, x2, y2, Color.Red);
+                    DDA(bmp,x1, y1, x2, y2, Color.Red);
                 else
                     if (rbPMR.Checked)
-                    bresenham1(x1, y1, x2, y2, Color.Blue);
+                    bresenham1(bmp, x1, y1, x2, y2, Color.Blue);
                 x1 = x2 = y2 = y1 = -1;
+                picBox1.Image = bmp;
+                picBox1.Refresh();
 
                 desenhando = false;
             }
@@ -75,16 +77,18 @@ namespace TrabalhoCG
             {
                 Bitmap temp = (Bitmap)bmp.Clone();
 
-                using (Graphics g = Graphics.FromImage(temp))
-                {
-                    g.DrawLine(Pens.Gray, x1, y1, e.X, e.Y);
-                }
+                if (rbEqReta.Checked)
+                    desenharReta(temp, x1, y1, e.X, e.Y, Color.Gray);
+                else if (rbDDA.Checked)
+                    DDA(temp, x1, y1, e.X, e.Y, Color.Gray);
+                else if (rbPMR.Checked)
+                    bresenham1(temp, x1, y1, e.X, e.Y, Color.Gray);
 
                 picBox1.Image = temp;
             }
         }
 
-        public void DDA(int x1, int y1, int x2, int y2, Color cor)
+        public void DDA(Bitmap alvo,int x1, int y1, int x2, int y2, Color cor)
         {
             int dx = x2 - x1;
             int dy = y2 - y1;
@@ -97,8 +101,8 @@ namespace TrabalhoCG
             float x = x1;
             float y = y1;
 
-            BitmapData bitmapDatabmp = bmp.LockBits(
-                new Rectangle(0, 0, bmp.Width, bmp.Height),
+            BitmapData bitmapDatabmp = alvo.LockBits(
+                new Rectangle(0, 0, alvo.Width, alvo.Height),
                 ImageLockMode.ReadWrite,
                 PixelFormat.Format24bppRgb);
 
@@ -127,11 +131,11 @@ namespace TrabalhoCG
                 }
             }
 
-            bmp.UnlockBits(bitmapDatabmp);
+            alvo.UnlockBits(bitmapDatabmp);
             picBox1.Refresh();
         }
 
-        public void bresenham1(int x1, int y1, int x2, int y2, Color cor)
+        public void bresenham1(Bitmap alvo,int x1, int y1, int x2, int y2, Color cor)
         {
             int dx = Math.Abs(x2 - x1);
             int dy = Math.Abs(y2 - y1);
@@ -141,8 +145,8 @@ namespace TrabalhoCG
 
             int err = dx - dy;
 
-            BitmapData bitmapDatabmp = bmp.LockBits(
-                new Rectangle(0, 0, bmp.Width, bmp.Height),
+            BitmapData bitmapDatabmp = alvo.LockBits(
+                new Rectangle(0, 0, alvo.Width, alvo.Height),
                 ImageLockMode.ReadWrite,
                 PixelFormat.Format24bppRgb);
 
@@ -180,7 +184,7 @@ namespace TrabalhoCG
                 }
             }
 
-            bmp.UnlockBits(bitmapDatabmp);
+            alvo.UnlockBits(bitmapDatabmp);
             picBox1.Refresh();
         }
 
@@ -226,13 +230,13 @@ namespace TrabalhoCG
             picBox1.Refresh();
         }
 
-        public void desenharReta(int x1, int y1, int x2, int y2, Color cor)
+        public void desenharReta(Bitmap alvo,int x1, int y1, int x2, int y2, Color cor)
         {
             double dy = y2 - y1;
             double dx = x2 - x1;
 
-            BitmapData bitmapDatabmp = bmp.LockBits(
-                new Rectangle(0, 0, bmp.Width, bmp.Height),
+            BitmapData bitmapDatabmp = alvo.LockBits(
+                new Rectangle(0, 0, alvo.Width, alvo.Height),
                 ImageLockMode.ReadWrite,
                 PixelFormat.Format24bppRgb);
 
@@ -294,7 +298,7 @@ namespace TrabalhoCG
                 }
             }
 
-            bmp.UnlockBits(bitmapDatabmp);
+            alvo.UnlockBits(bitmapDatabmp);
             picBox1.Refresh();
         }
 

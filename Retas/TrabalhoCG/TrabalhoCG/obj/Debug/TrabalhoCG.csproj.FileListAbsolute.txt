@@ -53,3 +53,15 @@ D:\trb CG\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.cs
 D:\trb CG\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.cache
 D:\trb CG\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe
 D:\trb CG\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.exe.config
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.exe
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.pdb
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.AssemblyReference.cache
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.SuggestedBindingRedirects.cache
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe.config
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.Form1.resources
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.Properties.Resources.resources
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.GenerateResource.cache
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.cache
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe
+D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
