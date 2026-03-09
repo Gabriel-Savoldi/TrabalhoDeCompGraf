@@ -169,6 +169,7 @@
             this.picBox1.TabIndex = 1;
             this.picBox1.TabStop = false;
             this.picBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picBox1_MouseClick);
+            this.picBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picBox1_MouseMove);
             // 
             // openFileDialog1
             // 
