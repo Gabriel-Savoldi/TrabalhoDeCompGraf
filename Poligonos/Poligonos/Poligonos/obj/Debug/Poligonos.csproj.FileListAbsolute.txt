@@ -1,0 +1,10 @@
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\bin\Debug\Poligonos.exe.config
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\bin\Debug\Poligonos.exe
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\bin\Debug\Poligonos.pdb
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\obj\Debug\Poligonos.csproj.AssemblyReference.cache
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\obj\Debug\Poligonos.Form1.resources
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\obj\Debug\Poligonos.Properties.Resources.resources
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\obj\Debug\Poligonos.csproj.GenerateResource.cache
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\obj\Debug\Poligonos.csproj.CoreCompileInputs.cache
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\obj\Debug\Poligonos.exe
+D:\Nova pasta\TrabalhoDeCompGraf\Poligonos\Poligonos\Poligonos\obj\Debug\Poligonos.pdb
