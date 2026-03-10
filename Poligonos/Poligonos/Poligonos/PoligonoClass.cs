@@ -30,7 +30,7 @@ namespace Poligonos
 
             public PoligonoClass(int id,string nome)
             {
-                id = id;
+                Id = id;
                 ListaDePontos = new List<Point>();
                 Nome = string.Empty;
             }

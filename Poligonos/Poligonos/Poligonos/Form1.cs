@@ -75,7 +75,7 @@ namespace Poligonos
             {
                 // Ação que vai executar ao clicar no botão
 
-
+                picBox1.Image = bmp;
                 // Extrair o número (supondo que o número seja sempre de um dígito no final)
                 string numeroStr = btn.Name.Substring(btn.Name.Length -1);  // Pega o último caractere
 
@@ -110,10 +110,11 @@ namespace Poligonos
 
 
             int i = 0;
-            int aux = listaPoligonos[i].getId();
+            
             while (i < listaPoligonos.Count && listaPoligonos[i].getId() != id)
             {
-               i++;
+                int aux = listaPoligonos[i].getId();
+                i++;
             }
               if(i<listaPoligonos.Count)
                 return listaPoligonos [i];
@@ -126,7 +127,7 @@ namespace Poligonos
 
             Bitmap temp = (Bitmap)bmp.Clone();
 
-
+            Point inicial = poligono.ListaDePontos[0];
 
             foreach (Point p in poligono.ListaDePontos)
             {
@@ -143,18 +144,34 @@ namespace Poligonos
                         //mais moderno e menos ariscado
                         (x1, x2) = (x2, x1);
                         (y1, y2) = (y2, y1);
-                        desenharReta(bmp, x1, y1, x2, y2, Color.Cyan);
+                        desenharReta(temp, x1, y1, x2, y2, Color.Cyan);
 
                     }
                     else
                     {
-                        desenharReta(bmp, x1, y1, x2, y2, Color.Cyan);
+                        desenharReta(temp, x1, y1, x2, y2, Color.Cyan);
                         x1 = x2;
                         y1 = y2;
                     }
                 }
 
             }
+            x2=inicial.X; y2 = inicial.Y;
+            if (x1 > x2 && y1 > y2)
+            {
+                //mais moderno e menos ariscado
+                (x1, x2) = (x2, x1);
+                (y1, y2) = (y2, y1);
+                desenharReta(temp, x1, y1, x2, y2, Color.Cyan);
+
+            }
+            else
+            {
+                desenharReta(temp, x1, y1, x2, y2, Color.Cyan);
+                x1 = x2;
+                y1 = y2;
+            }
+
             picBox1.Image = temp;
             picBox1.Refresh();
         }
