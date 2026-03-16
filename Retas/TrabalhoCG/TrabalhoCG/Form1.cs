@@ -63,6 +63,8 @@ namespace TrabalhoCG
                 else
                     if (rbPMR.Checked)
                     bresenham1(bmp, x1, y1, x2, y2, Color.Blue);
+                else if(rbPMC.Checked)
+                    circuPM(bmp, x1, y1, x2, y2,Color.Aquamarine);
                 x1 = x2 = y2 = y1 = -1;
                 picBox1.Image = bmp;
                 picBox1.Refresh();
@@ -83,9 +85,62 @@ namespace TrabalhoCG
                     DDA(temp, x1, y1, e.X, e.Y, Color.Gray);
                 else if (rbPMR.Checked)
                     bresenham1(temp, x1, y1, e.X, e.Y, Color.Gray);
+                else if(rbPMC.Checked)
+                    circuPM(temp, x1, y1, e.X, e.Y, Color.Gray);
 
-                picBox1.Image = temp;
+                    picBox1.Image = temp;
             }
+        }
+
+        public void circuPM(Bitmap alvo, int x1, int y1, int x2, int y2, Color cor)
+        {
+
+            int x = x1;
+            double y = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)) / 2;
+            double d = 1 - y;
+
+            BitmapData bitmapDatabmp = alvo.LockBits(new Rectangle(0, 0, alvo.Width, alvo.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            unsafe
+            {
+                byte* p = (byte*)bitmapDatabmp.Scan0.ToPointer();
+                byte* pos;
+                int yPos = (int)Math.Round(y);
+
+                int count = 0;
+                while (count<8)
+                {
+                    
+                }
+
+
+                pos = p + x * pixelSize + yPos * bitmapDatabmp.Stride;
+                pos[0] = cor.B;
+                pos[1] = cor.G;
+                pos[2] = cor.R;
+                while (y > x)
+                {
+                    if (d < 0)
+                    {
+                        d += 2 * x + 3;
+                    }
+                    else
+                    {
+                        d += 2 * (x - y) + 5;
+                        y--;
+                    }
+                   
+                    x++;
+                    yPos = (int)Math.Round(y);
+
+                    pos = p+ x* pixelSize + yPos*bitmapDatabmp.Stride;
+                    pos[0] = cor.B;
+                    pos[1] = cor.G;
+                    pos[2] = cor.R;
+                }
+            }
+            alvo.UnlockBits(bitmapDatabmp);
+            picBox1.Refresh();
         }
 
         public void DDA(Bitmap alvo,int x1, int y1, int x2, int y2, Color cor)

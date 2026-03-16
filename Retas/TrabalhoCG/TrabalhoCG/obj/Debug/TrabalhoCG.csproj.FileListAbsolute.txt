@@ -65,3 +65,14 @@ D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoC
 D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.cache
 D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe
 D:\Nova pasta\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.exe.config
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.exe
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.pdb
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.AssemblyReference.cache
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe.config
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.Form1.resources
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.Properties.Resources.resources
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.GenerateResource.cache
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.cache
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe
+D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
