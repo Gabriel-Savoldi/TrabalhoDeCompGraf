@@ -76,3 +76,4 @@ D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.GenerateResource.c
 D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.cache
 D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe
 D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
+D:\cg\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.SuggestedBindingRedirects.cache

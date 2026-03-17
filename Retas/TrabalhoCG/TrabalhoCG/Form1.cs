@@ -17,12 +17,26 @@ namespace TrabalhoCG
         Image img;
         Bitmap bmp;
         private int pixelSize = 3;
-        private int x1,y1,x2,y2;
+        private int x1, y1, x2, y2;
         bool desenhando = false;
+        List<Point> points = new List<Point>
+        {
+            new Point(-1,-1),
+            new Point(0,-1),
+            new Point(1,-1),
+            new Point(-1,0),
+            new Point(1,0),
+            new Point(-1,1),
+            new Point(0,1),
+            new Point(1,1)
+        };
+
+
 
         public Form1()
         {
             InitializeComponent();
+            
             bmp = new Bitmap(1200, 800);
             picBox1.SizeMode = PictureBoxSizeMode.Normal;
             using (Graphics g = Graphics.FromImage(bmp))
@@ -88,37 +102,31 @@ namespace TrabalhoCG
                 else if(rbPMC.Checked)
                     circuPM(temp, x1, y1, e.X, e.Y, Color.Gray);
 
-                    picBox1.Image = temp;
+                picBox1.Image = temp;
             }
         }
 
         public void circuPM(Bitmap alvo, int x1, int y1, int x2, int y2, Color cor)
         {
+            int x = 0;
 
-            int x = x1;
-            double y = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)) / 2;
-            double d = 1 - y;
+            int r = (int)Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+            int y = r;
 
-            BitmapData bitmapDatabmp = alvo.LockBits(new Rectangle(0, 0, alvo.Width, alvo.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            int d = 1 - r;
+
+            BitmapData bitmapDatabmp = alvo.LockBits(
+                new Rectangle(0, 0, alvo.Width, alvo.Height),
+                ImageLockMode.ReadWrite,
+                PixelFormat.Format24bppRgb);
 
             unsafe
             {
                 byte* p = (byte*)bitmapDatabmp.Scan0.ToPointer();
-                byte* pos;
-                int yPos = (int)Math.Round(y);
 
-                int count = 0;
-                while (count<8)
-                {
-                    
-                }
+                pintarPM(bitmapDatabmp, x1, y1, x, y, cor, p);
 
-
-                pos = p + x * pixelSize + yPos * bitmapDatabmp.Stride;
-                pos[0] = cor.B;
-                pos[1] = cor.G;
-                pos[2] = cor.R;
-                while (y > x)
+                while (x <= y)
                 {
                     if (d < 0)
                     {
@@ -129,19 +137,57 @@ namespace TrabalhoCG
                         d += 2 * (x - y) + 5;
                         y--;
                     }
-                   
-                    x++;
-                    yPos = (int)Math.Round(y);
 
-                    pos = p+ x* pixelSize + yPos*bitmapDatabmp.Stride;
-                    pos[0] = cor.B;
-                    pos[1] = cor.G;
-                    pos[2] = cor.R;
+                
+                    x++;
+
+                    pintarPM(bitmapDatabmp, x1, y1, x, y, cor, p);
+
                 }
             }
+
             alvo.UnlockBits(bitmapDatabmp);
             picBox1.Refresh();
         }
+
+        unsafe private void pintarPixel(BitmapData img, int x, int y, Color cor, byte* p)
+        {
+            if (x > 0 && y > 0 && x < img.Width && y < img.Height)
+            {
+
+                byte* pos = p + x * pixelSize + y * img.Stride;
+                pos[0] = cor.B;
+                pos[1] = cor.G;
+                pos[2] = cor.R;
+            }
+        }
+
+        /*
+         * (x1 + x, y1 + y)
+            (x1 + y, y1 + x)
+            (x1 - x, y1 + y)
+            (x1 - y, y1 + x)
+            (x1 - x, y1 - y)
+            (x1 - y, y1 - x)
+            (x1 + x, y1 - y)
+            (x1 + y, y1 - x)
+         * 
+         * 
+         * 
+         */
+
+        unsafe private void pintarPM(BitmapData img, int xc, int yc, int x, int y, Color cor, byte* p)
+        {
+            pintarPixel(img, xc + x, yc + y, cor, p);
+            pintarPixel(img, xc + y, yc + x, cor, p);
+            pintarPixel(img, xc - x, yc + y, cor, p);
+            pintarPixel(img, xc - y, yc + x, cor, p);
+            pintarPixel(img, xc - x, yc - y, cor, p);
+            pintarPixel(img, xc - y, yc - x, cor, p);
+            pintarPixel(img, xc + x , yc - y, cor, p);
+            pintarPixel(img, xc + y, yc - x, cor, p);
+        }
+
 
         public void DDA(Bitmap alvo,int x1, int y1, int x2, int y2, Color cor)
         {
