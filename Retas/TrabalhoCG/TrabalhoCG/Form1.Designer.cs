@@ -41,6 +41,8 @@
             this.picBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnLimpar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.rbElipse = new System.Windows.Forms.RadioButton();
             this.tabControl.SuspendLayout();
             this.Retas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox1)).BeginInit();
@@ -52,12 +54,14 @@
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(244, 489);
+            this.tabControl.Size = new System.Drawing.Size(244, 643);
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl.TabIndex = 0;
             // 
             // Retas
             // 
+            this.Retas.Controls.Add(this.rbElipse);
+            this.Retas.Controls.Add(this.label3);
             this.Retas.Controls.Add(this.label2);
             this.Retas.Controls.Add(this.label1);
             this.Retas.Controls.Add(this.rbPMC);
@@ -69,7 +73,7 @@
             this.Retas.Location = new System.Drawing.Point(4, 22);
             this.Retas.Name = "Retas";
             this.Retas.Padding = new System.Windows.Forms.Padding(3);
-            this.Retas.Size = new System.Drawing.Size(236, 463);
+            this.Retas.Size = new System.Drawing.Size(236, 617);
             this.Retas.TabIndex = 1;
             this.Retas.Text = "Retas";
             this.Retas.UseVisualStyleBackColor = true;
@@ -178,13 +182,34 @@
             // btnLimpar
             // 
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(77, 536);
+            this.btnLimpar.Location = new System.Drawing.Point(77, 683);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(110, 49);
             this.btnLimpar.TabIndex = 2;
             this.btnLimpar.Text = "Limpar tela";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Constantia", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(16, 449);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 33);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "ELIPSE";
+            // 
+            // rbElipse
+            // 
+            this.rbElipse.AutoSize = true;
+            this.rbElipse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbElipse.Location = new System.Drawing.Point(19, 507);
+            this.rbElipse.Name = "rbElipse";
+            this.rbElipse.Size = new System.Drawing.Size(105, 21);
+            this.rbElipse.TabIndex = 7;
+            this.rbElipse.Text = "Ponto Médio";
+            this.rbElipse.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -220,6 +245,8 @@
         private System.Windows.Forms.RadioButton rbEqReta;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.RadioButton rbElipse;
+        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -77,3 +77,15 @@ D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.
 D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe
 D:\CG\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.pdb
 D:\cg\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.SuggestedBindingRedirects.cache
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.exe.config
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.exe
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\bin\Debug\TrabalhoCG.pdb
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.AssemblyReference.cache
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.SuggestedBindingRedirects.cache
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe.config
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.Form1.resources
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.Properties.Resources.resources
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.GenerateResource.cache
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.csproj.CoreCompileInputs.cache
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.exe
+D:\TrabalhoDeCompGraf\Retas\TrabalhoCG\TrabalhoCG\obj\Debug\TrabalhoCG.pdb

@@ -14,7 +14,7 @@ namespace TrabalhoCG
 {
     public partial class Form1 : Form
     {
-        Image img;
+        Bitmap img;
         Bitmap bmp;
         private int pixelSize = 3;
         private int x1, y1, x2, y2;
@@ -38,8 +38,14 @@ namespace TrabalhoCG
             InitializeComponent();
             
             bmp = new Bitmap(1200, 800);
+            
             picBox1.SizeMode = PictureBoxSizeMode.Normal;
             using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.White);
+            }
+            img = new Bitmap(1200, 800);
+            using (Graphics g = Graphics.FromImage(img))
             {
                 g.Clear(Color.White);
             }
@@ -47,8 +53,6 @@ namespace TrabalhoCG
             x1 = x2 = y1 = y2 = -1;
 
         }
-
-
 
         private void picBox1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -78,7 +82,15 @@ namespace TrabalhoCG
                     if (rbPMR.Checked)
                     bresenham1(bmp, x1, y1, x2, y2, Color.Blue);
                 else if(rbPMC.Checked)
-                    circuPM(bmp, x1, y1, x2, y2,Color.Aquamarine);
+                    circuPM(bmp, x1, y1, x2, y2,Color.Red);
+                else if (rbEqCircu.Checked)
+                    circuEq(bmp, x1, y1, x2, y2, Color.Red);
+                else if (rbTrigo.Checked)
+                    circuTrig(bmp, x1, y1, x2, y2, Color.Red);
+                else if(rbElipse.Checked)
+                    MidpointElipse(bmp, x1, y1, x2, y2, Color.Green);
+
+
                 x1 = x2 = y2 = y1 = -1;
                 picBox1.Image = bmp;
                 picBox1.Refresh();
@@ -101,10 +113,69 @@ namespace TrabalhoCG
                     bresenham1(temp, x1, y1, e.X, e.Y, Color.Gray);
                 else if(rbPMC.Checked)
                     circuPM(temp, x1, y1, e.X, e.Y, Color.Gray);
+                else if(rbElipse.Checked)
+                    MidpointElipse(temp, x1, y1, e.X, e.Y, Color.Gray);
+                else if (rbEqCircu.Checked)
+                    circuEq(temp, x1, y1, e.X, e.Y, Color.Gray);
+                else if (rbTrigo.Checked)
+                    circuTrig(temp, x1, y1, e.X, e.Y, Color.Gray);
+
 
                 picBox1.Image = temp;
             }
         }
+
+        public void circuTrig(Bitmap alvo, int x1, int y1, int x2, int y2, Color cor)
+        {
+            int r = (int)Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+
+            BitmapData bitmapDatabmp = alvo.LockBits(
+                new Rectangle(0, 0, alvo.Width, alvo.Height),
+                ImageLockMode.ReadWrite,
+                PixelFormat.Format24bppRgb);
+
+            unsafe
+            {
+                byte* p = (byte*)bitmapDatabmp.Scan0.ToPointer();
+
+                for (double ang = 0; ang < 2 * Math.PI; ang += 0.01)
+                {
+                    int x = (int)(r * Math.Cos(ang));
+                    int y = (int)(r * Math.Sin(ang));
+
+                    pintarPixel(bitmapDatabmp, x1 + x, y1 + y, cor, p);
+                }
+            }
+
+            alvo.UnlockBits(bitmapDatabmp);
+            picBox1.Refresh();
+        }
+
+        public void circuEq(Bitmap alvo, int x1, int y1, int x2, int y2, Color cor)
+        {
+            int r = (int)Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+
+            BitmapData bitmapDatabmp = alvo.LockBits(
+                new Rectangle(0, 0, alvo.Width, alvo.Height),
+                ImageLockMode.ReadWrite,
+                PixelFormat.Format24bppRgb);
+
+            unsafe
+            {
+                byte* p = (byte*)bitmapDatabmp.Scan0.ToPointer();
+
+                for (int x = 0; x <= r; x++)
+                {
+                    int y = (int)Math.Sqrt(r * r - x * x);
+
+                    pintarPM(bitmapDatabmp, x1, y1, x, y, cor, p);
+                }
+            }
+
+            alvo.UnlockBits(bitmapDatabmp);
+            picBox1.Refresh();
+        }
+
 
         public void circuPM(Bitmap alvo, int x1, int y1, int x2, int y2, Color cor)
         {
@@ -137,12 +208,8 @@ namespace TrabalhoCG
                         d += 2 * (x - y) + 5;
                         y--;
                     }
-
-                
                     x++;
-
                     pintarPM(bitmapDatabmp, x1, y1, x, y, cor, p);
-
                 }
             }
 
@@ -162,19 +229,73 @@ namespace TrabalhoCG
             }
         }
 
-        /*
-         * (x1 + x, y1 + y)
-            (x1 + y, y1 + x)
-            (x1 - x, y1 + y)
-            (x1 - y, y1 + x)
-            (x1 - x, y1 - y)
-            (x1 - y, y1 - x)
-            (x1 + x, y1 - y)
-            (x1 + y, y1 - x)
-         * 
-         * 
-         * 
-         */
+
+        unsafe public void ElipsePoints(BitmapData img,int xc,int yc,int x, int y, Color cor,byte* p)
+        {
+            pintarPixel(img,xc + x, yc + y, cor,p);
+            pintarPixel(img, xc - x, yc + y, cor,p);
+            pintarPixel(img, xc + x, yc - y, cor,p);
+            pintarPixel(img, xc - x, yc - y, cor,p);
+        }
+
+        /* end CirclePoints */
+        void MidpointElipse(Bitmap alvo, int x1, int y1, int x2, int y2, Color cor)
+        {
+
+            BitmapData bitmapDatabmp = alvo.LockBits(
+                new Rectangle(0, 0, alvo.Width, alvo.Height),
+                ImageLockMode.ReadWrite,
+                PixelFormat.Format24bppRgb);
+
+            unsafe
+            {
+                byte* p = (byte*)bitmapDatabmp.Scan0.ToPointer();
+                int x, y;
+                int a = Math.Abs(x2 - x1);
+                int b = Math.Abs(y2 - y1);
+                double d1, d2;
+                /* Valores iniciais */
+                x = 0;
+                y = b;
+                d1 = b * b - a * a * b +  a * a/4.0;
+                ElipsePoints(bitmapDatabmp,x1,y1, x, y, cor,p); /* Simetria de ordem 4 */
+                while (a * a * (y - 0.5) > b * b * (x + 1))
+                {
+                    /* Regi~ao 1 */
+                    if (d1 < 0)
+                    {
+                        d1 = d1 + b * b * (2 * x + 3);
+                        x++;
+                    }
+                    else
+                    {
+                        d1 = d1 + b * b * (2 * x + 3) + a * a * (-2 * y + 2);
+                        x++;
+                        y--;
+                    }/*end if*/
+                    ElipsePoints(bitmapDatabmp, x1, y1, x, y, cor, p); /* Simetria de ordem 4 */
+                }/* end while */
+                d2 = b * b * (x + 0.5) * (x + 0.5) + a * a * (y - 1) * (y - 1) - a * a * b * b;
+                while (y > 0)
+                {
+                    /* Regi~ao 2 */
+                    if (d2 < 0)
+                    {
+                        d2 = d2 + b * b * (2 * x + 2) + a * a * (-2 * y + 3);
+                        x++;
+                        y--;
+                    }
+                    else
+                    {
+                        d2 = d2 + a * a * (-2 * y + 3);
+                        y--;
+                    }/*end if*/
+                    ElipsePoints(bitmapDatabmp, x1, y1, x, y, cor, p); /* Simetria de ordem 4 */
+                }/* end while */
+            }
+            alvo.UnlockBits(bitmapDatabmp);
+        }/*end MidpointElipse*/
+
 
         unsafe private void pintarPM(BitmapData img, int xc, int yc, int x, int y, Color cor, byte* p)
         {
@@ -187,7 +308,6 @@ namespace TrabalhoCG
             pintarPixel(img, xc + x , yc - y, cor, p);
             pintarPixel(img, xc + y, yc - x, cor, p);
         }
-
 
         public void DDA(Bitmap alvo,int x1, int y1, int x2, int y2, Color cor)
         {
@@ -206,7 +326,6 @@ namespace TrabalhoCG
                 new Rectangle(0, 0, alvo.Width, alvo.Height),
                 ImageLockMode.ReadWrite,
                 PixelFormat.Format24bppRgb);
-
 
             unsafe
             {
@@ -231,7 +350,6 @@ namespace TrabalhoCG
                     y += yInc;
                 }
             }
-
             alvo.UnlockBits(bitmapDatabmp);
             picBox1.Refresh();
         }
@@ -307,6 +425,9 @@ namespace TrabalhoCG
             rbTrigo.Checked = false;
             rbPMC.Checked = false;
             rbPMR.Checked = false;
+            bmp = new Bitmap(img);
+            picBox1.Image = bmp;
+            desenhando = false;
         }
 
         void writeAllPixel(Color cor)
@@ -398,11 +519,8 @@ namespace TrabalhoCG
                     }
                 }
             }
-
             alvo.UnlockBits(bitmapDatabmp);
             picBox1.Refresh();
         }
-
-        
     }
 }
